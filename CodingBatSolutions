@@ -1,0 +1,56 @@
+public String[] wordsWithout(String[] words, String target) {
+  ArrayList<String> stack=new ArrayList<>();
+     for(int i=0;i<words.length;i++){
+        if(words[i]!=target){
+          stack.add(words[i]);
+        }
+     }
+      Object[]haydi=stack.toArray();
+     // String[]buddy=Arrays.copyOf(haydi, haydi.length, String[].class);
+     String yeni[]=new String[haydi.length];
+     for(int i=0;i<haydi.length;i++){
+       yeni[i]=haydi[i].toString();
+     }
+     return yeni;  
+}
+
+public int  largestIn(int[]array){
+  int maksTen=0;
+  for(int i:array){
+    if(maksTen<i && i%10==0){
+      maksTen=i;
+    }
+  }
+  return maksTen;
+}
+public int scoresSpecial(int[] a, int[] b) {
+  int bir=largestIn(a);
+    int iki=largestIn(b);
+    return bir+iki;
+}
+
+public String[] mergeTwo(String[] a, String[] b, int n) {
+  int alen=a.length;
+    int blen=b.length;
+  String[]merge=new String[alen+blen];
+  int in=0;
+  for(;in<alen;in++){
+    merge[in]=a[in];
+  }
+  int diger=0;
+  for(;in<alen+blen;in++){
+        merge[in]=b[diger++];
+  }
+  Arrays.sort(merge);
+  for(int j=0;j<alen+blen-1;j++){
+    if(merge[j].equals(merge[j+1])){
+      merge[j]="z";
+    }
+  }
+  Arrays.sort(merge);
+  String []temp3=new String[n];
+  for(int i=0;i<n;i++){
+      temp3[i]=merge[i];
+  }
+  return temp3;
+}
